@@ -1,0 +1,3 @@
+/Users/miguel/Projects/tinyrenderer/CMakeFiles/tinyrenderer.dir
+/Users/miguel/Projects/tinyrenderer/CMakeFiles/edit_cache.dir
+/Users/miguel/Projects/tinyrenderer/CMakeFiles/rebuild_cache.dir
