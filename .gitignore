@@ -1,2 +1,18 @@
-output.tga
-output_rasterization.tga
+# CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Compiled object files
+*.o
+*.obj
+
+# Output files
+*.tga
+
+# Temporary or backup files
+*.tmp
+*.log
+*.bak
+

@@ -110,41 +110,41 @@ void triangle(int ax, int ay, int bx, int by, int cx, int cy, TGAImage &image,
 int main(int argc, char **argv) {
   TGAImage image(width, height, TGAImage::RGB);
 
-  Model model("./obj/diablo3_pose/diablo3_pose.obj");
+  Model model("./obj/anime.obj");
   // wireframe
-  for (int i = 0; i < model.nfaces(); i++) {
-    auto [ax, ay] = project(model.vert(i, 0));
-    auto [bx, by] = project(model.vert(i, 1));
-    auto [cx, cy] = project(model.vert(i, 2));
-    line(ax, ay, bx, by, image, red);
-    line(bx, by, cx, cy, image, red);
-    line(cx, cy, ax, ay, image, red);
-  }
-
-  for (int i = 0; i < model.nverts(); i++) {
-
-    vec3 v = model.vert(i);
-    auto [x, y] = project(v);
-    image.set(x, y, white);
-  }
-
-  // Rasterization
   /*
 for (int i = 0; i < model.nfaces(); i++) {
-
 auto [ax, ay] = project(model.vert(i, 0));
 auto [bx, by] = project(model.vert(i, 1));
 auto [cx, cy] = project(model.vert(i, 2));
+line(ax, ay, bx, by, image, red);
+line(bx, by, cx, cy, image, red);
+line(cx, cy, ax, ay, image, red);
+}
 
-constexpr TGAColor green = {0, 255, 0, 255};
-TGAColor randomColor = {static_cast<std::uint8_t>(rand() % 255),
-                      static_cast<std::uint8_t>(rand() % 255),
-                      static_cast<std::uint8_t>(rand() % 255),
-                      static_cast<std::uint8_t>(255)};
+for (int i = 0; i < model.nverts(); i++) {
 
-triangle(ax, ay, bx, by, cx, cy, image, randomColor);
+vec3 v = model.vert(i);
+auto [x, y] = project(v);
+image.set(x, y, white);
 }
   */
+  // Rasterization
+
+  for (int i = 0; i < model.nfaces(); i++) {
+
+    auto [ax, ay] = project(model.vert(i, 0));
+    auto [bx, by] = project(model.vert(i, 1));
+    auto [cx, cy] = project(model.vert(i, 2));
+
+    constexpr TGAColor green = {0, 255, 0, 255};
+    TGAColor randomColor = {static_cast<std::uint8_t>(rand() % 255),
+                            static_cast<std::uint8_t>(rand() % 255),
+                            static_cast<std::uint8_t>(rand() % 255),
+                            static_cast<std::uint8_t>(255)};
+
+    triangle(ax, ay, bx, by, cx, cy, image, randomColor);
+  }
 
   image.write_tga_file("output.tga");
   return 0;
